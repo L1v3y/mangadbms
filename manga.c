@@ -4,86 +4,88 @@
 
 struct manga
 {
-  char bookName[30];
-  char author[30];
+  char manganame[30];
+  char artist[30];
   int pages;
   float price;
 };
 
 int main()
 {
-  struct manga l[100];
-  char arNm[30], bookNm[30];
-  int i, j, keepcount;
-  i = j = keepcount = 0;
+  struct manga store[100];
+  char artistname[30], manganame[30];
+  int i, noofmanga, count;
+  i = 0;
+  noofmanga = 0; 
+  count = 0;
 
-  while (j != 6)
+  while (noofmanga != 6)
   {
-     printf("\n===============Manga Management System===============\n");
-    printf("\n\n1. Add book information\n2. Display book information\n");
-    printf("3. List all books\n");
+     printf("\n****************Manga Management System***************\n");
+    printf("\n\n1. Store manga information\n2. Show manga information\n");
+    printf("3. Display all the manga\n");
     printf("4. List the title of manga\n");
-    printf("5. List the number of manga\n");
+    printf("5. List the number of manga stored in database\n");
     printf("6. Exit");
 
-    printf("\n\nEnter one of the above : ");
-    scanf("%d", &j);
+    printf("\n\nEnter one option from above: ");
+    scanf("%d", &noofmanga);
 
-    switch (j)
+    switch (noofmanga)
     {
     /* Add book */
     case 1:
 
       printf("Enter Manga name = ");
-      scanf("%s", l[i].bookName);
+      scanf("%s", store[i].manganame);
 
-      printf("Enter author name = ");
-      scanf("%s", l[i].author);
+      printf("Enter artist name = ");
+      scanf("%s", store[i].artist);
 
       printf("Enter pages = ");
-      scanf("%d", &l[i].pages);
+      scanf("%d", &store[i].pages);
 
       printf("Enter price = ");
-      scanf("%f", &l[i].price);
-      keepcount++;
+      scanf("%f", &store[i].price);
+      count++;
 
       break;
     case 2:
       printf("you have entered the following information\n");
-      for (i = 0; i < keepcount; i++)
+      for (i = 0; i < count; i++)
       {
-        printf("Manga name = %s", l[i].bookName);
+        printf("Manga name = %s", store[i].manganame);
 
-        printf("\t author name = %s", l[i].author);
+        printf("\t artist name = %s", store[i].artist);
 
-        printf("\t  pages = %d", l[i].pages);
+        printf("\t  pages = %d", store[i].pages);
 
-        printf("\t  price = %f", l[i].price);
+        printf("\t  price = %f", store[i].price);
       }
       break;
 
     case 3:
       printf("Enter author name : ");
-      scanf("%s", arNm);
-      for (i = 0; i < keepcount; i++)
+      scanf("%s", artistname);
+      for (i = 0; i < count; i++)
       {
-        if (strcmp(arNm, l[i].author) == 0)
-          printf("%s %s %d %f", l[i].bookName, l[i].author, l[i].pages, l[i].price);
+        if (strcmp(artistname, store[i].artist) == 0)
+          printf("%s %s %d %f", store[i].manganame, store[i].artist, store[i].pages, store[i].price);
       }
       break;
 
     case 4:
       printf("Enter manga name : ");
-      scanf("%s", bookNm);
-      for (i = 0; i < keepcount; i++)
+      scanf("%s", manganame);
+      for (i = 0; i < count; i++)
       {
-        if (strcmp(bookNm, l[i].bookName) == 0)
-          printf("%s \t %s \t %d \t %f", l[i].bookName, l[i].author, l[i].pages, l[i].price);
+        if (strcmp(manganame, store[i].manganame) == 0)
+          printf("%s \t %s \t %d \t %f", store[i].manganame, store[i].artist, store[i].pages, store[i].price);
       }
       break;
 
     case 5:
-      printf("\n No of manga in library : %d", keepcount);
+      printf("\n No of manga in library : %d", count);
       break;
     case 6:
       exit(0);
